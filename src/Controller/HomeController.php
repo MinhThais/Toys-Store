@@ -157,4 +157,14 @@ class HomeController extends AbstractController
         ]);  
     }
 
+     /**
+     * @Route("/", name="home")
+     */
+    public function indexHomeAction(ProductRepository $repo, CartRepository $cartrepo): Response
+    {
+        $product = $repo->findAll();
+        return $this->render("home_page/index.html.twig",[
+            'product' =>$product
+        ]);
+    }
 }
