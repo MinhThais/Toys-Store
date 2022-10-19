@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>KTK_shop</title>
+        <title>ATN Shop</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 
         viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
@@ -33,12 +33,12 @@
     </head>
     <body>
         {% block nav %}
-        <nav class="navbar navbar-expand-lg" style="background-color: rgb(26 148 255 / 90%);">
+        <nav class="navbar navbar-expand-lg" style="background-color: rgb(255 149 26)">
   <div class="container">
         <div class="container">		
             <ul class="navbar-nav">
                 <li><a class="nav-item nav-link text-light" href="#"><i class="fa fa-phone" style="font-size:18px"></i> +84977-53-15-28</a></li>
-                <li><a class="nav-item nav-link text-light" href="#"><i class="fa fa-envelope-o" style="font-size:18px"></i> KTKshop@gmail.com</a></li>
+                <li><a class="nav-item nav-link text-light" href="#"><i class="fa fa-envelope-o" style="font-size:18px"></i> ATNshop@gmail.com</a></li>
                 <li><a class="nav-item nav-link text-light" href="#"><i class="fa fa-map-marker" style="font-size:18px"></i> Can Tho</a></li>
                 <li><a class="nav-item nav-link text-light" href="#"><i class="fa fa-facebook" style="font-size:18px"></i> Facebook</a></li>			
             </ul>
@@ -49,7 +49,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-light"  href="#" id="navbarDropdown"
                         role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-user" aria-hidden="true" style="font-size:19px"></i> {{app.user.userIdentifier}}</a>
-<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="{{path('app_order_history')}}"><i class="fa fa-history" aria-hidden="true"></i> Order history</a></li>
                             <li><a class="dropdown-item" href="{{ path('profile') }}"><i class="fa fa-refresh" aria-hidden="true"></i> Update account</a></li>
                             <li><a class="dropdown-item" href="{{ path('app_logout') }}"><i class="fa fa-sign-out" aria-hidden="true" style="font-size:20px"></i> Log out</a></li>
@@ -63,10 +63,10 @@
         </div>
   </div>
 </nav>
-<nav class="navbar navbar-expand-lg" style="background-color: rgba(26,148,255,255);">   
+<nav class="navbar navbar-expand-lg" style="background-color: rgb(255 140 26);">   
   <div class="container-fluid">
-    <a class="navbar-brand text-light" href="{{path('home_page')}}"><img src="../img/Logo_KTK_Shop.png" width="160" height="90" alt="Image not available"></a>
-    <a class="navbar-toggler"  data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand text-light" href="{{path('home_page')}}">ATN Shop</a>
+    <a class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler"style="background-color: rgba(26,148,255,255);"><i class="fa fa-bars text-light" ></i></span>
     </a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -84,17 +84,18 @@
                             <li><a class="dropdown-item" href="{{path('app_order_management')}}">Order Management</a></li>
                             <li><a class="dropdown-item" href="{{path('app_brand_management')}}">Brand Management</a></li>
                             <li><a class="dropdown-item" href="{{path('app_pro_manage')}}">Product Management</a></li>
+                            <li><a class="dropdown-item" href="{{path('app_shop_management')}}">Shop Management</a></li>
                         </ul>
         </li>                  
                     {% endif %}
                     {% endif %}
-        <li class="nav-item">
+        {# <li class="nav-item">
             <form method="GET" action="{{ path("app_compare") }}">
                 <input style= "display: none;" name="proA" id="proA" value="">
                 <input style= "display: none;" name="proB" id="proB" value="">
                 <input name="compareBtn" id="compareBtn" class="btn text-light" style="background-color: rgba(26,148,255,255);" type="submit" value="Compare"/>  
              </form>
-                </li>
+                </li> #}
                 <li class="nav-item">   
                     {% if app.user %}
                     <div class="navbar-nav ms-auto"> 
@@ -119,16 +120,15 @@
         {% block body %}
         {% endblock %}
         {% block footer %}
-    <div class=" text-center text-lg-start text-light" style="background-color: rgba(26,148,255,255);">
+    <div class=" text-center text-lg-start text-light" style="background-color: rgb(255 140 26);">
   <div class="container p-4 " >
     <div class="row">
       <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
         <h5 class="text-uppercase text-light">Information</h5>
-
-        <p>
+        {# <p>
             KTK mobile store specializes in selling high-quality smartphones with reasonable prices, and reputable warranty policies. 
             You can buy all phones of brands like Apple, Samsung, VIVO, NOKIA, OPPO, BPhone, etc.
-        </p>
+        </p> #}
       </div>
       <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
         <h5 class="text-uppercase text-light">Address</h5>
@@ -148,8 +148,8 @@
       </div>
     </div>
   </div>
-  <div class="text-center p-3 text-light" style="background-color: rgba(26,148,255,255);">© 2022 Copyright:
-<a class="text-light" href="{{path('home_page')}}">KTK_shop.Com</a>
+  <div class="text-center p-3 text-light" style="background-color: rgb(255 140 26);">© 2022 Copyright:
+<a class="text-light" href="{{path('home_page')}}">ATNshop.Com</a>
   </div>
     </div>
     {% endblock %}

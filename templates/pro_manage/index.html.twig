@@ -17,11 +17,14 @@
                             <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Name</th>
+                            <th scope="col">Import Price</th>                
                             <th scope="col">Price</th>
-                            <th scope="col">Descript</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Date</th>
                             <th scope="col">Qty</th>
+                            <th scope="col">BrandName</th>
+                            <th scope="col">ShopName</th>
                             <th scope="col">Image</th>
-                            <th scope="col">BrandID</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -29,15 +32,14 @@
                                 <tr>
                                     <td>{{p.productid}}</td>
                                     <td>{{p.Productname}}</td>
+                                    <td>{{p.importPrice}}</td>
                                     <td>{{p.Price}}</td>
                                     <td>{{p.Productdes}}</td>
+                                    <td>{{p.Productdate|date("m/d/Y")}}</td>
                                     <td>{{p.Productquantity}}</td>
+                                    <td>{{p.brandname}}</td>
+                                    <td>{{p.shopname}}</td>
                                     <td>{{p.Productimage}}</td>
-                                    <td>{{p.brandid}}</td>          
-                                    <td>
-                                        <a href="{{path('updatepromanage',{'id' : p.productid})}}" class="btn rounded-pill text-light"
-                                         style="background-color: rgba(26,148,255,255);"> Update </a>
-                                    </td>
                                 </tr>     
                                 {% endfor %}                        
                         </tbody>

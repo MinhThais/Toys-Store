@@ -19,7 +19,9 @@ class ProManageController extends AbstractController
      */
     public function indexAction(ProductRepository $repo): Response
     {
-        $product = $repo->indexProduct();
+        $product = $repo->indexProduct(
+
+        );
         return $this->render('pro_manage/index.html.twig', [
             'product' =>$product
         ]);
@@ -42,13 +44,14 @@ class ProManageController extends AbstractController
             $file = $form->get('Productimage')->getData()->getClientOriginalName();
 
             $product->setProductname($data->getProductname());
+            $product->setImportPrice($data->getImportPrice());
             $product->setPrice($data->getPrice());
             $product->setProductdes($data->getProductdes());
             $product->setProductdate($data->getProductdate());
             $product->setProductquantity($data->getProductquantity());
-            $product->setProductimage($file);
+            $product->setShop($data->getShop());
             $product->setBrandid($data->getBrandid());
-            $product->setStatus($data->getStatus());
+            $product->setProductimage($file);
 
             $entity->persist($product);
             $entity->flush();

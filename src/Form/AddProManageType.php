@@ -4,13 +4,13 @@ namespace App\Form;
 
 use App\Entity\Brand;
 use App\Entity\Product;
+use App\Entity\Shop;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -34,7 +34,14 @@ class AddProManageType extends AbstractType{
             ->add('Productname', TextType::class, [
                 'label' => 'Product Name'
             ])
-            ->add('price', IntegerType::class, [
+            ->add('Importprice', IntegerType::class, [
+                'constraints' => [new Positive()],
+                'attr' => [
+                'min' => 0,
+                ],
+                'label' => 'Import Price'
+            ])
+            ->add('Price', IntegerType::class, [
                 'constraints' => [new Positive()],
                 'attr' => [
                 'min' => 0
@@ -51,23 +58,30 @@ class AddProManageType extends AbstractType{
             ->add('Productquantity', NumberType::class, [
                 'label' => 'Product Quantity'
             ])
-            ->add('Productimage', FileType::class, [
-                'label' => 'Product Image',
-                'data_class'=>null
-                ])
-            ->add('Brandid', EntityType::class, [
+            ->add('BrandID', EntityType::class, [
                 'class' =>Brand::class,
                 'choice_label' =>'Brandname',
                 'label' => 'Brand'
             ])
-            ->add('Status', ChoiceType::class, 
+            
+            ->add('Shop', EntityType::class, 
             [
+                'class' =>Shop::class,
+                'choice_label' =>'Shopname',
+                'label' => 'Shop Name'
+            ])
+            ->add('Status', ChoiceType::class, [
                 'choices' => [
                     'Available' => '1',
                     'Unavailable' => '0',
                 ],
-                'expanded' => true
+                'expanded'=> true
             ])
+            ->add('Productimage', FileType::class, [
+                'label' => 'Product Image',
+                'data_class'=>null
+                ])
+
             ->add('save', SubmitType::class, [
                 'label' => "Save"
             ]);

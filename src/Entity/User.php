@@ -12,6 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @ORM\Table(name="`user`")
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -80,10 +81,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $orderid;
 
 
+
+
     public function __construct()
     {
         $this->cart = new ArrayCollection();
         $this->orderid = new ArrayCollection();
+        $this->OrderID = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -245,32 +249,5 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @return Collection<int, Order>
      */
-    public function getOrderid(): Collection
-    {
-        return $this->orderid;
-    }
-
-    public function addOrderid(Order $orderid): self
-    {
-        if (!$this->orderid->contains($orderid)) {
-            $this->orderid[] = $orderid;
-            $orderid->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeOrderid(Order $orderid): self
-    {
-        if ($this->orderid->removeElement($orderid)) {
-            // set the owning side to null (unless already changed)
-            if ($orderid->getUser() === $this) {
-                $orderid->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-
+    
 }

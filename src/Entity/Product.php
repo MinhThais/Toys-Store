@@ -31,11 +31,6 @@ class Product
     private $Price;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $oldPrice;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     private $Productdes;
@@ -76,6 +71,16 @@ class Product
      */
     private $cartdetail;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $importPrice;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Shop::class, inversedBy="Productid")
+     */
+    private $shop;
+
     public function __construct()
     {
         $this->Cartid = new ArrayCollection();
@@ -109,18 +114,6 @@ class Product
     public function setPrice(int $Price): self
     {
         $this->Price = $Price;
-
-        return $this;
-    }
-
-    public function getOldPrice(): ?int
-    {
-        return $this->oldPrice;
-    }
-
-    public function setOldPrice(int $oldPrice): self
-    {
-        $this->oldPrice = $oldPrice;
 
         return $this;
     }
@@ -256,4 +249,31 @@ class Product
 
         return $this;
     }
+
+
+    public function getImportPrice(): ?int
+    {
+        return $this->importPrice;
+    }
+
+    public function setImportPrice(int $importPrice): self
+    {
+        $this->importPrice = $importPrice;
+
+        return $this;
+    }
+
+    public function getShop(): ?Shop
+    {
+        return $this->shop;
+    }
+
+    public function setShop(?Shop $shop): self
+    {
+        $this->shop = $shop;
+
+        return $this;
+    }
+
+
 }

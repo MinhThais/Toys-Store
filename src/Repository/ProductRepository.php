@@ -44,14 +44,23 @@ class ProductRepository extends ServiceEntityRepository
     */
    public function indexProduct()
    {
-       $entity = $this->getEntityManager();
-       return $entity->createQuery('
-       SELECT p.id as productid, p.Productname, p.Price,
-       p.Productdes, p.Productquantity, p.Productimage, b.id as brandid
-       FROM App\Entity\Product p, App\Entity\Brand b WHERE p.Brandid = b.id
-       ')
-       ->getArrayResult()
-       ;
+    //    $entity = $this->getEntityManager();
+    //    return $entity->createQuery('
+    //    SELECT p.id as productid, p.Productname,p.importPrice, p.Price,
+    //    p.Productdes,p.Productdate, p.Productquantity, p.Productimage, b.id as brandid
+    //    FROM App\Entity\Product p, App\Entity\Brand b WHERE p.Brandid = b.id
+    //    ')   
+    //    ->getArrayResult()
+    //    ;
+    return $this->createQueryBuilder('p')
+       ->select('p.id as productid, p.Productname,p.importPrice, p.Price,
+            p.Productdes,p.Productdate, p.Productquantity, p.Productimage,
+             b.Brandname as brandname, s.Shopname as shopname')
+            ->innerJoin('p.Brandid', 'b')
+            ->innerJoin('p.shop', 's')
+            ->getQuery()
+            ->getResult()
+            ;
    }
 
       /**
