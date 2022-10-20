@@ -26,11 +26,6 @@ class Order
     private $Orderdate;
 
     /**
-     * @ORM\Column(type="datetime")
-     */
-    private $Deliverydate;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     private $Address;
@@ -55,7 +50,10 @@ class Order
      */
     private $user;
 
-    
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $Deliverydate;
 
     public function __construct()
     {
@@ -76,18 +74,6 @@ class Order
     public function setOrderdate(\DateTimeInterface $Orderdate): self
     {
         $this->Orderdate = $Orderdate;
-
-        return $this;
-    }
-
-    public function getDeliverydate(): ?\DateTimeInterface
-    {
-        return $this->Deliverydate;
-    }
-
-    public function setDeliverydate(?\DateTimeInterface $Deliverydate): self
-    {
-        $this->Deliverydate = $Deliverydate;
 
         return $this;
     }
@@ -170,4 +156,17 @@ class Order
 
         return $this;
     }
+
+    public function getDeliverydate(): ?\DateTimeInterface
+    {
+        return $this->Deliverydate;
+    }
+
+    public function setDeliverydate(?\DateTimeInterface $Deliverydate): self
+    {
+        $this->Deliverydate = $Deliverydate;
+
+        return $this;
+    }
+
 }
