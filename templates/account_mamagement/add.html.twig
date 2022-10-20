@@ -2,6 +2,9 @@
 
 {% block body %}
 <div class="container">
+<h3>Add New Admin Account </h3>
+<a href="{{path('app_account_mamagement')}}"><button type="button" class="btn btn-outline-primary">Back to index</button></a>
+<br>
 {% if error == 1 %}
     <div class="alert alert-danger">Username already exists</div>
 {% endif %}

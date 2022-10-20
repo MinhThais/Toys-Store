@@ -15,11 +15,11 @@
                 
                 <div class="col-lg-7 p-5">
                     <div class="product_description">
-                        <div class="product_name">Product Name: {{product.Productname}}</div>
-                        
-                        <div> <span class="product_price"></span>Price: {{product.Price}} VND</div>
-                        
-                        <div><span class="product_info"><span>Decription: {{product.Productdes}}</div>                        
+                        <div class="product_name">- Product Name: {{product.Productname}}</div>
+                        <div><span class="product_price"></span>- Price: {{product.Price}}$</div>
+                        <div><span class="product_price"></span>- Import Date: {{product.Productdate|date("m/d/Y")}}$</div>
+                        <div><span class="product_info"><span>- Decription: {{product.Productdes}}</div>                        
+                        <div><span class="product_info"><span>- Address: {{productdetail}}</div>                        
                         <hr class="singleline">
                         <div class="card-body align-self-center">
                             <a href="{{ path('addcart', {'id' : product.id})}}" class="btn btn-primary">Add to Cart <i class="fa fa-shopping-cart" style="font-size:20px"></i></a>

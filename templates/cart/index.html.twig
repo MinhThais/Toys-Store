@@ -65,7 +65,7 @@
                 </form>                   
                   </div>
                   <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                    <h6 class="mb-0"><span></span> {{c.Price}} VND</h6>
+                    <h6 class="mb-0"><span></span> {{c.Price}}$</h6>
                   </div>
                   <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                     <a href="{{ path('deletecart', {'id' : c.id})}}" class="text-muted text-decoration-none"><i class="fa fa-trash" style="font-size: 20px; color: gray;"></i></a>
@@ -85,7 +85,7 @@
                   <hr class="my-4">
                   <div class="d-flex justify-content-between mb-5">
                     <h5 class="text-uppercase">Total price</h5>
-                    <h5><span></span>{{total}} VND</h5>
+                    <h5><span></span>{{total}}$</h5>
                   </div>
                   <form class="d-flex" method="">
                     <a href="{{path('order')}}" class="btn text-light " style= "background-color: rgba(13,92,182,255);" type="submit" value="Payment" name="payment">Order</a> 

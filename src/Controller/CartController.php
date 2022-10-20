@@ -56,6 +56,7 @@ class CartController extends AbstractController
         
         $cart = $cartrepo->findOneBy(['user'=>$user]);
         $ca = $caderepo->checkCartDetail($id, $cart);
+        $carID = $caderepo->checkCartDetails($id, $cart);
 
         $product = $repo->find($id);
         
@@ -70,7 +71,7 @@ class CartController extends AbstractController
         else {           
             $quantity = $ca[0]['quantity'] + 1;
 
-            $id = $ca[0]['id'];
+            $id = $carID[0]['id'];
             $cartdetail = $caderepo->find($id);
             $cartdetail->setQuantity($quantity);
             $entity->persist($cartdetail);

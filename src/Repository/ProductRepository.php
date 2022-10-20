@@ -63,6 +63,21 @@ class ProductRepository extends ServiceEntityRepository
             ;
    }
 
+   /**
+    * @return Product[] Returns an array of Product objects
+    */
+    public function addressProduct($idShop)
+   {
+       return $this->createQueryBuilder('p')
+            ->select('s.Address as address')
+            ->innerJoin('p.shop', 's')
+           ->Where('p.id = :idShop')
+           ->setParameter('idShop', $idShop)
+           ->getQuery()
+           ->getResult()
+       ;
+   }
+
       /**
     * @return Product[] Returns an array of Product objects
     */
@@ -83,9 +98,10 @@ class ProductRepository extends ServiceEntityRepository
     */
     public function findProductByName($productname)
    {
+    $productname = strtolower($productname);
        return $this->createQueryBuilder('p')
             ->select('p.id, p.Productname, p.Price, p.Productimage')
-           ->Where('p.Productname LIKE :productname')
+           ->Where('LOWER(p.Productname) LIKE :productname')
            ->setParameter('productname', "%${productname}%")
            ->andWhere('p.Status = 1')
            ->getQuery()
@@ -93,20 +109,21 @@ class ProductRepository extends ServiceEntityRepository
        ;
    }
 
-      /**
+     /**
     * @return Product[] Returns an array of Product objects
     */
     public function countProductByName($productname)
-   {
-       return $this->createQueryBuilder('p')
-            ->select('COUNT(p.id) as count')
-           ->Where('p.Productname LIKE :productname')
-           ->setParameter('productname', "%${productname}%")
-           ->andWhere('p.Status = 1')
-           ->getQuery()
-           ->getResult()
-       ;
-   }
+    {
+         $productname = strtolower($productname);
+        return $this->createQueryBuilder('p')
+             ->select('COUNT(p.id) as count')
+            ->Where('LOWER(p.Productname) LIKE :productname')
+            ->setParameter('productname', "%${productname}%")
+            ->andWhere('p.Status = 1')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
       /**
     * @return Product[] Returns an array of Product objects

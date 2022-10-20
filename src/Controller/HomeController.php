@@ -36,8 +36,11 @@ class HomeController extends AbstractController
     public function productDetailAction(ProductRepository $repo, int $id): Response
     {
         $product = $repo->find($id);
+        $productdetail = $repo->addressProduct($id);
+        $productdetail = $productdetail[0]['address'];
         return $this->render("home_page/productdetail.html.twig",[
-            'product' =>$product
+            'product' =>$product,
+            'productdetail' => $productdetail
         ]);
     }
 
