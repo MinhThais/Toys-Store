@@ -64,7 +64,7 @@ class OrderDetailRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('o')
             ->select('o.id as odid, o.OderProQuan as quantity, o.Price as price, o.Total as total,
-            od.id as order, p.id as product')
+            od.id as order, p.Productname as product')
             ->innerJoin('o.Orderid', 'od')
             ->innerJoin('o.Productid', 'p')
             ->where('o.Orderid = :id')
