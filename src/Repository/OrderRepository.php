@@ -59,7 +59,7 @@ class OrderRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('o')
             ->select('o.id as Oid, o.Orderdate, o.Deliverydate, o.Address, 
-            o.Payment, o.Status, u.id as user')
+            o.Payment, o.Status, u.username as user')
             ->innerJoin('o.user', 'u')
             ->getQuery()
             ->getResult()
