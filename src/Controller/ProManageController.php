@@ -62,4 +62,63 @@ class ProManageController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+    /**
+     * @Route("/updatepromanage/{id}", name="updatepromanage")
+     */
+    public function updateProManageAction(Request $req, ManagerRegistry $res, int $id, ProductRepository $repo): Response
+    {
+        $product = $repo->find($id);
+
+        $form = $this->createForm(UpdateProManageType::class, $product);
+
+        $form->handleRequest($req);
+        $entity = $res->getManager();
+
+        if($form->isSubmitted() && $form->isValid()){
+            $data = $form->getData();
+            $file = $req->request->get('file');
+                      
+
+            $product->setProductname($data->getProductname());
+            $product->setPrice($data->getPrice());
+            $product->setProductdes($data->getProductdes());
+            $product->setProductdate($data->getProductdate());
+            $product->setProductquantity($data->getProductquantity());
+            if($file){
+                $product->setProductimage($file);
+            }
+            else{
+                $oldimg = $req->request->get('oldimg');
+                $product->setProductimage($oldimg);
+            }
+            $product->setBrandid($data->getBrandid());
+            $product->setStatus($data->getStatus());
+
+            $entity->persist($product);
+            $entity->flush();
+
+            return $this->redirectToRoute('app_pro_manage', []);
+
+        }
+        return $this->render('pro_manage/update.html.twig', [
+            'form' => $form->createView(),
+            'p' => $product
+        ]);
+    }
+
+    /**
+     * @Route("/deleteproduct/{id}", name="deleteproduct")
+     */
+    public function deleteCartAction(int $id, ManagerRegistry $res, ProductRepository $prorepo
+    ): Response
+    {
+        $entity = $res->getManager();
+        $product = $prorepo->find($id);
+
+        $entity->remove($product);
+        $entity->flush($product);
+
+        return $this->redirectToRoute('app_pro_manage');
+    }
 }

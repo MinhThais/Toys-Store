@@ -41,6 +41,14 @@
                                     <td>{{p.shopname}}</td>
                                     <td><img src="../img/{{p.Productimage}}" width="100px" height="100px" alt=""></td>
                                     {# <td>{{p.Productimage}}</td> #}
+                                    <td>
+                                        <a href="{{path('updatepromanage',{'id' : p.productid})}}" class="btn rounded-pill text-light"
+                                         style="background-color: rgba(26,148,255,255);"> Update </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{path('deleteproduct',{'id' : p.productid})}}" class="btn rounded-pill text-light"
+                                         style="background-color: rgba(26,148,255,255);"> Delete </a>
+                                    </td>
                                 </tr>     
                                 {% endfor %}                        
                         </tbody>
