@@ -11,47 +11,21 @@
       <!-- product1 -->
       {% for p in product %}
         <div class="col-md-4">
-            <div class="card">
+            <div class="card" style="height: 540px;">
+               <br>
               <img 
                 src="./img/{{p.Productimage}}"
                 class="card-img-top"
                 alt="Not image available" style="margin: auto;
-                width: 80%;"
+                width: 70%;"
               />
-              <div class="card-body align-self-center">
+              <div class="card-body align-self-center text-center">
                 <a href="{{ path('productDetail', {'id' : p.id})}}" class="text-decoration-none"><h5 class="card-title text-center">{{p.Productname}}</h5></a>
                 <h6 class="card-subtitle mb-2 text-muted text-center"><span></span>{{p.Price}} VND</h6>
+                 <div class="card-footer align-self-center text-center" style="background-color: white;">
                 <a href="{{ path('home_page', {'id' : p.id})}}" class="btn btn-primary">Add to Cart <i class="fa fa-shopping-cart" style="font-size:20px"></i></i></a>
-                                  <form>
-                  <input class="form-check-input" name ="checkbox" type="checkbox" value = "{{p.id}}" id="checkBox{{p.id}}">
-                  <label class="form-check-label" for="flexCheckDefault">
-                    Add to compare
-                  </label>
-                <script language="javascript">
-                  var compareList = [];
-                    document.getElementById("checkBox{{p.id}}").onclick = function(e){
-                      if (this.checked){
-                        if(compareList.length < 2)
-                        {
-                          compareList.unshift({{p.id}});
-                          document.getElementById("proA").value = compareList[0];
-                          document.getElementById("proB").value = compareList[1];
-                        }
-                        else{
-                          alert('Max 2 products');
-                          document.getElementById("checkBox{{p.id}}").checked = false;
-                        }
-                      }
-                      else{
-                        for (i = 0; i < compareList.length; ++i){
-                          if(compareList[i] == {{p.id}}){
-                            compareList.splice(i, 1);
-                          }
-                        }
-                      }
-                };
-                </script>
-                </form>
+                 <a href="{{ path('productDetail', {'id' : p.id})}}" class=""><p>Product Detail</p></a>   
+                </div>               
               </div>
             </div>
         </div>
